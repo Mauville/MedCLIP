@@ -14,17 +14,39 @@ endif::[]
 MedCLIP is a medical image captioning Deep Learning model based on the https://github.com/openai/CLIP[OpenAI CLIP] architecture.
 
 .Captioning an image.
-image::img_README_2.png[loading=lazy]
+++++
+<img align="center" width="475px" src="imagesdir/img_README_2.png?raw=true"/>
+++++
 
 .Image search is also possible.
-image::img_README_1.png[loading=lazy]
+++++
+<img align="center" width="275px" src="imagesdir/img_README_1.png?raw=true"/>
+++++
 
 == Introduction
+CLIP is a beautiful hashing process.
 
-== Tools
+Through encodings and transformations, CLIP learns relationships between text and images.
+The underlying model allows for either captioning of an image from a set of known captions, or searching an image from a given caption.
+With approppriate encoders, the CLIP model can be optimised for certain domain-specific applications. Our hope with MedCLIP is to aid the radiologist with emitting diagnoses.
+
+== Explanation
+CLIP works by encoding an image and a related caption into matrixes.
+CLIP optimizes the last layer of the (transfer learnable) encoders to make both image and text encodings as similar as possible.
+
+image::img_README_4.png[loading=lazy]
+
+
+== Tools Used
 
 The model was trained using a curated https://medpix.nlm.nih.gov[MedPix] dataset that focuses on Magnetic Resonance, Computer Tomography and X-Ray scans.
 https://github.com/EmilyAlsentzer/clinicalBERT[ClinicalBERT] was used to encode the text, while
 https://keras.io/api/applications/resnet/[ResNet50] was used for the images.
 
-image::img_README_3.png[loading=lazy]
+== Achieved X by doing Y as measured by Z
+
+Implemented a medical image captioning Deep Learning model by using the CLIP model, ResNet50 and ClinicalBERT. We obtained a 61% Rouge similarity rate on our implementation with the MedPix Dataset.
+
+++++
+<img align="right" height="75px" src="imagesdir/img_README_3.png?raw=true"/>
+++++
