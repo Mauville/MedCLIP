@@ -3,3 +3,5 @@
 The script will (responsibly) download all the images from MedPix into a directory.
 
 Further cleaning can be performed on the raw dataset.
+
+After removing some images, run `cleanDeleted.py` to update the CSV file.
