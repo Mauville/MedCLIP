@@ -1,6 +1,6 @@
 ﻿= Data
 
-The script will (responsibly) download all the images from MedPix into a directory.
+The `iscrape` script will (responsibly) download all the images from `MedPix.csv` into a directory.
 
 Further cleaning can be performed on the raw dataset.
 
