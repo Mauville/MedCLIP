@@ -23,7 +23,7 @@ MedCLIP is a medical image captioning Deep Learning neural network based on the 
 <img align="center" width="475px" src="imagedir/img_README_1.png?raw=true"/>
 ++++
 
-toc:[]
+toc::[]
 
 == Usage
 Run `main.ipynb` on a Colab instance.
@@ -94,5 +94,5 @@ Some relevant datasets:
 Implemented a medical image captioning Deep Learning model by using the CLIP model, ResNet50 and ClinicalBERT. We obtained a 61% Rouge similarity rate on our implementation with the MedPix Dataset.
 
 ++++
-<img align="right" height="75px" src="imagedir/img_README_3.png?raw=true"/>
+<img align="cwnter" height="25px" src="imagedir/img_README_3.png?raw=true"/>
 ++++
