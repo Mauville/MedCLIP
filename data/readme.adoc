@@ -5,3 +5,5 @@ The `iscrape` script will (responsibly) download all the images from `MedPix.csv
 Further cleaning can be performed on the raw dataset.
 
 After removing some images, run `cleanDeleted.py` to update the CSV file.
+
+`datastats` will output basic info on your dataset

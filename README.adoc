@@ -1,1 +1,30 @@
-= MedCLIP
+﻿= MedCLIP
+:toc:
+:toc-placement!:
+:imagesdir: imagedir/
+
+ifdef::env-github[]
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+endif::[]
+
+MedCLIP is a medical image captioning Deep Learning model based on the https://github.com/openai/CLIP[OpenAI CLIP] architecture.
+
+.Captioning an image.
+image::img_README_2.png[loading=lazy]
+
+.Image search is also possible.
+image::img_README_1.png[loading=lazy]
+
+== Introduction
+
+== Tools
+
+The model was trained using a curated https://medpix.nlm.nih.gov[MedPix] dataset that focuses on Magnetic Resonance, Computer Tomography and X-Ray scans.
+https://github.com/EmilyAlsentzer/clinicalBERT[ClinicalBERT] was used to encode the text, while
+https://keras.io/api/applications/resnet/[ResNet50] was used for the images.
+
+image::img_README_3.png[loading=lazy]
