@@ -11,37 +11,83 @@ ifdef::env-github[]
 :warning-caption: :warning:
 endif::[]
 
-MedCLIP is a medical image captioning Deep Learning model based on the https://github.com/openai/CLIP[OpenAI CLIP] architecture.
+MedCLIP is a medical image captioning Deep Learning neural network based on the https://github.com/openai/CLIP[OpenAI CLIP] architecture.
 
 .Captioning an image.
 ++++
-<img align="center" width="475px" src="imagedir/img_README_2.png?raw=true"/>
+<img align="center" width="675px" src="imagedir/img_README_2.png?raw=true"/>
 ++++
 
 .Image search is also possible.
 ++++
-<img align="center" width="275px" src="imagedir/img_README_1.png?raw=true"/>
+<img align="center" width="475px" src="imagedir/img_README_1.png?raw=true"/>
 ++++
+
+toc:[]
+
+== Usage
+Run `main.ipynb` on a Colab instance.
+Weights for the model are provided, so you don't need to train again.
 
 == Introduction
 CLIP is a beautiful hashing process.
 
-Through encodings and transformations, CLIP learns relationships between text and images.
+Through encodings and transformations, CLIP learns relationships between natural language and images.
 The underlying model allows for either captioning of an image from a set of known captions, or searching an image from a given caption.
-With approppriate encoders, the CLIP model can be optimised for certain domain-specific applications. Our hope with MedCLIP is to aid the radiologist with emitting diagnoses.
+With appropriate encoders, the CLIP model can be optimised for certain domain-specific applications. Our hope with MedCLIP is to help the radiologist emit diagnoses.
 
 == Explanation
-CLIP works by encoding an image and a related caption into matrixes.
-CLIP optimizes the last layer of the (transfer learnable) encoders to make both image and text encodings as similar as possible.
+CLIP works by encoding an image and a related caption into tensors.
+The model then optimises the last layer of the (transfer learnable) encoders to make both image and text encodings as similar as possible. (1. Contrastive Pretraining)
 
 image::img_README_4.png[loading=lazy]
 
+After the model is successfully trained, we can query it with new information. (2. Zero shot)
+
+. Take an input
+. Encode with the custom trained encoders
+. Find a match (image or text) from the known data set.
+.. Go through each entry of the data set
+.. Check similarity with the current input
+.. Output the pairs resulting in most similarity
+. [Optionally] Measure the similarity between the real caption, and the guessed one.
+
+
+=== Loss
+The perfect relationship between encoded images and captions is described by their encoded representations being the same.
+This similarity can easily be measured by looking at the softmax between the dot product of the encoded inputs; a perfect encoding will yield the identity matrix.
+
+image::img_README_5.png[loading=lazy]
 
 == Tools Used
-
 The model was trained using a curated https://medpix.nlm.nih.gov[MedPix] dataset that focuses on Magnetic Resonance, Computer Tomography and X-Ray scans.
-https://github.com/EmilyAlsentzer/clinicalBERT[ClinicalBERT] was used to encode the text, while
+https://github.com/EmilyAlsentzer/clinicalBERT[ClinicalBERT] was used to encode the text and
 https://keras.io/api/applications/resnet/[ResNet50] was used for the images.
+
+Similarity between captions was measured using Rouge, Bleu, Meteor and Cider.
+
+
+== Future Work
+* Add new datasets; the more datasets the model has, the better the captioning performance (bigger space from where to choose a caption/image).
+
+Some relevant datasets:
+
+** IU Chest X-Ray
+** ChestX-Ray 14
+** PEIR gross
+** BCIDR
+** CheXpert
+** MIMIC-CXR
+** PadChest
+** ICLEF caption
+
+* Generate new captions instead of just looking them up. This will vastly improve accuracy.
+
+== Members and Acknowledgements
+* Repo Owner
+* https://github.com/tlacuilose/[Jose Javier Tlacuilo]
+* Jorge Allan Gomez Mercado
+* Luis Soenksen
 
 == Achieved X by doing Y as measured by Z
 
